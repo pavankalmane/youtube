@@ -11,6 +11,6 @@ const Body = () => {
             {isOpen && <Sidebar />}
             <Main />             
         </div>
-    )
+    )   
 }
 export default Body;
