@@ -8,7 +8,7 @@ const Sidebar = () => {
         <div className='w-60 p-4'>
             <ul className='space-y-2'>
                 <li>
-                    <Link to="/home" className='flex items-center space-x-3 p-2 rounded-lg hover:bg-gray-100 cursor-pointer'>
+                    <Link to="/" className='flex items-center space-x-3 p-2 rounded-lg hover:bg-gray-100 cursor-pointer'>
                         <AiFillHome className='w-6 h-6 text-gray-700' />
                         <span className='font-medium'>Home</span>
                     </Link>

@@ -1,7 +1,7 @@
 import React from 'react'
-import Main from './Main';
 import Sidebar from './Sidebar';
 import { useSelector } from 'react-redux';
+import { Outlet } from 'react-router-dom';
 
 const Body = () => {
     const isOpen = useSelector((store) => store.sidebar.isOpen);
@@ -9,7 +9,9 @@ const Body = () => {
     return (
         <div className='flex'>
             {isOpen && <Sidebar />}
-            <Main />             
+            <div className="flex-1">
+                <Outlet />
+            </div>            
         </div>
     )   
 }
