@@ -12,7 +12,6 @@ const Suggestions = () => {
     try {
       const data = await fetch(suggestion_API);
       const json = await data.json();
-      console.log("Fetched suggestions:", json);
       dispatch(setSuggestions(json.items));
     } catch (error) {
       console.error("Error fetching suggestions:", error);
@@ -24,15 +23,12 @@ const Suggestions = () => {
   }, [fetchSuggestions]);
 
   return (
-    <div>
-      <ul>
-        {suggestions?.length > 0 && (
-          <li>
-            <Buttons title={suggestions[0]?.snippet?.title} />
-          </li>
-        )}
-      </ul>
-    </div>
+    <div className="flex overflow-x-auto [scrollbar-width:none]">
+        {suggestions?.length > 0 && 
+            suggestions?.map((suggestion) => (
+              <Buttons key={suggestion.id} title={suggestion.snippet.title} />
+            ))}
+      </div>
   );
 };
 

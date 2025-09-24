@@ -1,10 +1,10 @@
 import Logo from './Logo';
-import Suggestions from './suggestions';
+// import Suggestions from './suggestions';
 const Header = () => {
   return (
       <div>
           <Logo />
-          <Suggestions />
+        
       </div>
   )
 }

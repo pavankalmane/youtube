@@ -1,13 +1,15 @@
 import React from 'react';
 import Video from './Video';
+import Suggestions from './suggestions';
 import { useSelector } from 'react-redux';
 
 const Main = () => {
     const isOpen = useSelector((store) => store.sidebar.isOpen);
     
     return (
-        <div className={`flex-1 ${isOpen ? 'ml-0' : 'ml-0'}`}>
-            <Video />
+        <div className="w-full max-w-full overflow-hidden">
+              <Suggestions />
+              <Video />
         </div>
     )
 };
