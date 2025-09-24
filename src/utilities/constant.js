@@ -1,0 +1,1 @@
+export const suggestion_API = `https://www.googleapis.com/youtube/v3/videoCategories?part=snippet&regionCode=US&key=${process.env.REACT_APP_YOUTUBE_API_KEY}`;

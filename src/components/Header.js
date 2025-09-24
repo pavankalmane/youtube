@@ -1,10 +1,10 @@
 import Logo from './Logo';
-import Menu from './Menu';
+import Suggestions from './suggestions';
 const Header = () => {
   return (
       <div>
           <Logo />
-          <Menu />
+          <Suggestions />
       </div>
   )
 }

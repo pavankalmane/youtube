@@ -2,12 +2,25 @@ import hamburgerIcon from '../utilities/assets/hamburgerIcon.png';
 import youtubeLogo from "../utilities/assets/youtubeLogo.png";
 import user from "../utilities/assets/user.png";
 import { IoSearchOutline } from 'react-icons/io5';
+import { useDispatch } from 'react-redux';
+import { toggleSidebar } from '../utilities/sidebarSlice';
 
 const Logo = () => {
+  const dispatch = useDispatch();
+
+  const handleToggleSidebar = () => {
+    dispatch(toggleSidebar());
+  };
+
   return (
     <div className='flex items-center justify-between w-full'>
        <div className='flex items-center'>
-          <img src={hamburgerIcon} alt="Menu" className='h-14 p-2' />
+          <img 
+            src={hamburgerIcon} 
+            alt="Menu" 
+            className='h-14 p-2 cursor-pointer hover:bg-gray-100 rounded-full' 
+            onClick={handleToggleSidebar}
+          />
           <img src={youtubeLogo} alt="YouTube Logo" className='h-16 ml-6' />
        </div>
        <div className='flex items-center'>
