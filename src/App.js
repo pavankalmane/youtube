@@ -8,6 +8,7 @@ import Home from './components/Home';
 import Shorts from './components/Shorts';
 import Subscriptions from './components/Subscriptions';
 import Library from './components/Library';
+import WatchVideo from './components/WatchVideo';
 function App() {
 
   const router = createBrowserRouter([
@@ -35,6 +36,10 @@ function App() {
         {
           path: "/library",
           element: <Library />
+        },
+        {
+          path: "/watch",
+          element: <WatchVideo />
         }
       ],
     }

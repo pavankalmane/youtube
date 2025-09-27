@@ -7,9 +7,9 @@ const Body = () => {
     const isOpen = useSelector((store) => store.sidebar.isOpen);
 
     return (
-        <div className='flex'>
+        <div className='flex '>
             {isOpen && <Sidebar />}
-            <div className="flex-1">
+            <div className='overflow-x-auto w-full'>
                 <Outlet />
             </div>            
         </div>
