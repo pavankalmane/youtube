@@ -2,27 +2,40 @@ import hamburgerIcon from '../utilities/assets/hamburgerIcon.png';
 import youtubeLogo from "../utilities/assets/youtubeLogo.png";
 import user from "../utilities/assets/user.png";
 import { IoSearchOutline } from 'react-icons/io5';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { toggleSidebar } from '../utilities/sidebarSlice';
 import { useEffect, useState } from 'react';
 import { YOUTUBE_SEARCH_API } from '../utilities/constant';
 import { AiOutlineSearch } from 'react-icons/ai';
+import { setSearchResults } from '../utilities/searchSlice';
 const Logo = () => {
   const dispatch = useDispatch();
+
+  const searchHistory = useSelector((store) => store.search);
   const [searchQuery,setSearchQuery] = useState('');
   const [suggestions,setSuggestions] = useState([]);
+  const [showSuggestions,setShowSuggestions] = useState(false);
+
   const searchSuggestions = async()=>{
       const data = await fetch(YOUTUBE_SEARCH_API+`&q=${searchQuery}`);
       const results = await data.json();
-      console.log(results[1]);
+
+      dispatch(setSearchResults({searchQuery:results[1]}));
       setSuggestions(results[1]);
+
     }
   
 
   useEffect(() => {
+
     const debounceTimer = setTimeout(() => {
-      searchSuggestions();
-    }, 500);
+      if(searchHistory[searchQuery]){
+        setSuggestions(searchHistory[searchQuery]);
+      }else{
+        searchSuggestions();
+      }
+      
+    }, 200);
 
     return () => clearTimeout(debounceTimer);
   }, [searchQuery]);
@@ -46,9 +59,11 @@ const Logo = () => {
           <input type='text' placeholder='Search' className='border border-gray-400 p-2 w-96 rounded-l-full h-10' 
           value={searchQuery} 
           onChange={e => setSearchQuery(e.target.value)}
+          onFocus={() => setShowSuggestions(true)}
+          onBlur={() => setTimeout(() => setShowSuggestions(false), 100)}
           />
           <button className='border border-gray-400 h-10 border-l-0 rounded-r-full bg-gray-50 hover:bg-gray-100 px-3'><IoSearchOutline className='w-5 h-5' /></button>  
-          {suggestions && suggestions.length > 0 && (
+          {showSuggestions && suggestions && suggestions.length > 0 && (
             <div className='absolute top-10 left-0 w-96 bg-white border border-gray-300 rounded-lg shadow-lg z-50'>
               {suggestions.map((suggestion) => (
                 <div key={suggestion} className='p-2 hover:bg-gray-100 cursor-pointer'>
