@@ -1,7 +1,6 @@
 import React from 'react'
 
 const VideoThumbnail = ({ thumbnail }) => {
-    console.log(thumbnail);
   return (
     <div className='p-2 m-2 w-60'>
         <img alt={thumbnail?.snippet?.title} src={thumbnail?.snippet?.thumbnails?.medium?.url} className=" rounded-lg shadow-lg cursor-pointer m-2" />
