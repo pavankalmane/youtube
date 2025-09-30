@@ -1,6 +1,7 @@
 import { CHANNEL_API } from "../utilities/constant";
 import { useEffect, useState } from "react";
 import VideoReaction from "./VideoReaction";
+import Comments from "./Comments";
 const CurrentVideo = ({ videoInfo }) => {
     const formatSubscriberCount = (count) => {
   if (!count) return '0';
@@ -37,6 +38,9 @@ const CurrentVideo = ({ videoInfo }) => {
             <span className="text-sm">{formatSubscriberCount(channelData?.statistics?.subscriberCount)} Subscribers</span>
         </div>
         <div className="flex"><VideoReaction  reaction={videoInfo?.statistics} /></div>
+    </div>
+    <div className="m-4 font-bold text-2xl">
+      <Comments />
     </div>
     </div>
 

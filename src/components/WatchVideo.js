@@ -56,7 +56,7 @@ const handleVideoClick = (video) => {
           <CurrentVideo videoInfo={videoData} />
         </div>
       </div>
-      <div className="h-screen overflow-y-auto overflow-x-hidden border-l pl-4 w-full bg-gray-100">
+      <div className="h-screen overflow-y-auto overflow-x-hidden border-l pl-4 w-full bg-gray-100 ">
         {upcomingVideos
           .filter(video => video && video.id) // Filter out undefined videos
           .map((upcomingVideo) => (
